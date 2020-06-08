@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-06-08T22:08:51.951Z",
+    "end": "2020-06-08T22:09:08.827Z",
+    "duration": 16876,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "884b93a1-a07d-430a-b745-0ee6bfe1808e",
+      "title": "",
+      "fullFile": "cypress/integration/registrationTest.js",
+      "file": "cypress/integration/registrationTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "768490d9-4fc3-4801-b393-2a955c25b302",
+          "title": "Sign up Test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "check that user can register successfully using a unique email and valid password",
+              "fullTitle": "Sign up Test suite check that user can register successfully using a unique email and valid password",
+              "timedOut": null,
+              "duration": 10230,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "registrationPage.visit();\nregistrationPage.addFirstName(testData.firstname);\nregistrationPage.addLastName(testData.lastname); //assert first name is not equal to last name\nexpect(testData.firstname).not.to.equal(testData.lastname);\nregistrationPage.addMobileNumber(testData.mobile);\nregistrationPage.addUniqueEmail(email);\nregistrationPage.addPassword(testData.password);\nregistrationPage.addConfirmPassword(testData.confirmPassword); //assert password and confirm password are equal\nexpect(testData.password).to.be.equal(testData.confirmPassword);\ncy.server();\ncy.route('POST', '/account/signup').as('post');\nregistrationPage.clickSignUp();\ncy.wait('@post').then(function () {\n  cy.get('@post').its('request').then(function (req) {\n    cy.writeFile('cypress/fixtures/signUpRequest.json', req);\n  });\n  cy.get('@post').its('response').then(function (response) {\n    cy.writeFile('cypress/fixtures/signUpResponse.json', response);\n  });\n});\naccountPage.assertAccountPageIsDisplayed();",
+              "err": {},
+              "uuid": "9031f895-20a0-48fd-8b28-c55a00f43b14",
+              "parentUUID": "768490d9-4fc3-4801-b393-2a955c25b302",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Check that registered user can login successfully",
+              "fullTitle": "Sign up Test suite Check that registered user can login successfully",
+              "timedOut": null,
+              "duration": 6508,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "accountPage.ExpandMyAccountDropDown();\naccountPage.clickSignOut();\nloginPage.fillEmail(email);\nloginPage.fillPassword(testData.password);\nloginPage.clickLogin();\naccountPage.assertAccountPageIsDisplayed();",
+              "err": {},
+              "uuid": "ad81fca7-a77e-438b-b97a-49017b88ed9c",
+              "parentUUID": "768490d9-4fc3-4801-b393-2a955c25b302",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9031f895-20a0-48fd-8b28-c55a00f43b14",
+            "ad81fca7-a77e-438b-b97a-49017b88ed9c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16738,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": {},
+      "version": "5.1.0"
+    }
+  }
+}
