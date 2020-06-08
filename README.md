@@ -1,20 +1,20 @@
 # CypressInPageObjectModelAndReporter
 This is a hands on an automation example website using a cypress object oriented programming based design and  in case in failure reports will be displayed with a screenshot
 
-Clone:
+# Clone:
 
 Clone this repo to your local machine using git clone https://github.com/mahmoudgabr93/CypressInPageObjectModelAndReporter.git
 
-Setup:
+# Setup:
 
 $ npm install
 
-Run Test cases:
+# Run Test cases:
 
 $ npm run t
 Or $npm run test
 
-Features:
+# Features:
 
 Implementing a test automation framework using an object oriented design
 The ablility to intercept the Sign up API endpoint and save its request and response
