@@ -1,4 +1,4 @@
-This is a hands on an automation example website using a cypress object oriented programming design and for failure a reports will be displayed with a screenshot
+This is a hands on an automation example website using a cypress object oriented programming design and for failure a report will be displayed with a screenshot
 
 # Clone:
 
