@@ -25,7 +25,8 @@ Including screenshots in the report for failures
 Recover from failure by closing the browser, terminating the test execution and generate the report accordingly
 
 
-#Refrences:
+# Refrences:
+
 https://www.cypress.io
 
 https://www.npmjs.com/package/mochawesome
