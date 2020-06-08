@@ -11,17 +11,22 @@ $ npm install
 
 # Run Test cases:
 
-$ npm run t
-Or $npm run test
+$ npm run test
 
 # Features:
 
 Implementing a test automation framework using an object oriented design
+
 The ablility to intercept the Sign up API endpoint and save its request and response
+
 Integration with Mochawesome reported for generating both JSON and HTML reports
+
 Including screenshots in the report for failures
+
 Recover from failure by closing the browser, terminating the test execution and generate the report accordingly
 
-Refrences:
+
+#Refrences:
 https://www.cypress.io
+
 https://www.npmjs.com/package/mochawesome
