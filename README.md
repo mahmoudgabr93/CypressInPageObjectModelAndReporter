@@ -24,6 +24,8 @@ Including screenshots in the report for failures
 
 Recover from failure by closing the browser, terminating the test execution and generate the report accordingly
 
+<img width="1440" alt="Screen Shot 2020-06-09 at 12 28 36 AM" src="https://user-images.githubusercontent.com/32871076/84207711-4bc00f00-aab2-11ea-9fb7-e188abd74787.png">
+
 
 # Refrences:
 
