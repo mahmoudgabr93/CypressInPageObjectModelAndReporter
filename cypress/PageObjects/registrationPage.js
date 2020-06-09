@@ -1,13 +1,14 @@
 /// <reference types="Cypress" />
+const { registrationPage } = require("../fixtures/elementsLocators");
 
 class RegistrationPage {
     visit() {
-        cy.visit('/register');
+        cy.visit(registrationPage.url);
     }
 
     addFirstName(firstName) {
         expect(firstName[0]).to.equal(firstName[0].toUpperCase())
-        const field = cy.get('[name="firstname"]')
+        const field = cy.get(registrationPage.firstNameTextFieldSelector)
         field.clear({force: true});
         field.type(firstName, { force: true });
         return this;
@@ -15,7 +16,7 @@ class RegistrationPage {
 
     addLastName(lastName) {
         expect(lastName[0]).to.equal(lastName[0].toUpperCase())
-        const field = cy.get('[name="lastname"]')
+        const field = cy.get(registrationPage.lastNameTextFieldSelector)
         field.clear({force: true});
         field.type(lastName, { force: true });
         return this;
@@ -23,14 +24,14 @@ class RegistrationPage {
 
     addMobileNumber(mobileNo) {
         expect(mobileNo).to.have.lengthOf(11);
-        const field = cy.get('[name="phone"]');
+        const field = cy.get(registrationPage.mobileNumberTextFieldSelector);
         field.clear({force: true});
         field.type(mobileNo, { force: true });
         return this;
     }
 
     addUniqueEmail(email) {
-        const field = cy.get('[name="email"]');
+        const field = cy.get(registrationPage.emailTextFieldSelector);
         field.clear({force: true});
         field.type(email, { force: true });
         return this;
@@ -39,27 +40,23 @@ class RegistrationPage {
     addPassword(password) {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%*?&]{6,8}$/;
         expect(password).to.match(passwordRegex);
-        const field = cy.get('[name="password"]')
+        const field = cy.get(registrationPage.passwordTextFieldSelector)
         field.clear({force: true});
         field.type(password, { force: true });
         return this;
     }
 
     addConfirmPassword(password) {
-        const field = cy.get('[name="confirmpassword"]')
+        const field = cy.get(registrationPage.confirmPasswordTextFieldSelector)
         field.clear({force: true});
         field.type(password, { force: true });
         return this;
     }
 
     clickSignUp() {
-        const field = cy.get('[class="signupbtn btn_full btn btn-success btn-block btn-lg"]')
+        const field = cy.get(registrationPage.signUpButtonSelector)
         field.click();
         return this;
-    }
-
-    assertSignUp() {
-        cy.get('[class="nav-link go-text-right active"]').should('be.visible')
     }
 }
 

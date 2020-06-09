@@ -3,6 +3,7 @@
 import RegistrationPage from '../PageObjects/registrationPage';
 import LoginPage from '../PageObjects/loginPage';
 import AccountPage from '../PageObjects/accountPage';
+const helpers = require('../../utilities/helpers');
 const faker = require('faker');
 
 
@@ -39,18 +40,14 @@ describe('Sign up Test suite', () => {
         expect(testData.password).to.be.equal(testData.confirmPassword);
 
         cy.server();
-        cy.route('POST', '/account/signup').as('post');
+        cy.route('POST', '/account/signup').as('signUp');
 
         registrationPage.clickSignUp();
 
         //function to intercept the sign up request and save both request and the response in two JSON files
-        cy.wait('@post').then(() => {
-            cy.get('@post').its('request').then(req => {
-                cy.writeFile('cypress/fixtures/signUpRequest.json', req)
-            });
-            cy.get('@post').its('response').then(response => {
-                cy.writeFile('cypress/fixtures/signUpResponse.json', response)
-            });
+        cy.wait('@signUp').then(() => {
+            helpers.interceptRequest('@signUp');
+            helpers.interceptResponse('@signUp');
         });
 
         accountPage.assertAccountPageIsDisplayed();
